@@ -21,7 +21,7 @@ train/sft.py \
 --per_device_train_batch_size=${micro_batch_size} \
 --per_device_eval_batch_size=${micro_batch_size} \
 --gradient_accumulation_steps=${gradient_accumulation_steps} \
---train_file_path="simplescaling/s1K_tokenized" \
+--train_file_path="starlife/m1K_tokenized" \
 --block_size=32768 \
 --model_name=${base_model} \
 --warmup_ratio=0.05 \
@@ -37,8 +37,8 @@ train/sft.py \
 --weight_decay 1e-4 \
 --adam_beta1 0.9 \
 --adam_beta2 0.95 \
---output_dir="ckpts/s1_${uid}" \
---hub_model_id="simplescaling/s1-${uid}" \
+--output_dir="ckpts/m1_${uid}" \
+--hub_model_id="starlife/m1-${uid}" \
 --push_to_hub=True \
 --hub_always_push=True \
 --num_train_epochs ${epochs} \
