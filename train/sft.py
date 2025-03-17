@@ -13,9 +13,9 @@ import trl
 class TrainingConfig:
     model_name: str = field(default="Qwen/Qwen2.5-32B-Instruct")
     block_size: int = field(default=32768)
-    wandb_project: Optional[str] = field(default="s1")
-    wandb_entity: Optional[str] = field(default="hashimoto-group")
-    train_file_path: Optional[str] = field(default='simplescaling/s1K_tokenized')
+    wandb_project: Optional[str] = field(default="lumina")
+    wandb_entity: Optional[str] = field(default="starlife")
+    train_file_path: Optional[str] = field(default='starlife/m1K_tokenized')
     dagger: bool = field(default=False)
 
     def __post_init__(self):
