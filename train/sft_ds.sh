@@ -1,4 +1,3 @@
-# Reference Running: bash train/sft.sh
 uid="$(date +%Y%m%d_%H%M%S)"
 base_model="Qwen/Qwen2.5-32B-Instruct"
 lr=1e-5
@@ -9,10 +8,8 @@ gpu_count=$(nvidia-smi -L | wc -l)
 push_to_hub=true
 output_dir="ckpts/m1-${uid}"
 
-# Make sure the output directory exists
 mkdir -p ${output_dir}
 
-# Set environment variables that might help NCCL
 export NCCL_DEBUG=INFO
 export NCCL_IB_DISABLE=0
 export NCCL_P2P_DISABLE=0
