@@ -7,7 +7,7 @@ srun --job-name=XXX \
     --ntasks-per-node=1 \
     --account=YYY \
     --partition=ZZZ \
-    --gpus-per-task=2 \
+    --gpus-per-task=8 \
     --mem=256G \
     --time=3-00:00:00 \
     ./train/sft_slurm.sh \
