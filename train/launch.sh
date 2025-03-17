@@ -3,7 +3,7 @@
 uid="$(date +%Y%m%d-%H%M%S)"
 
 srun --job-name=XXX \
-    --nodes=1 \
+    --nodes=2 \
     --ntasks-per-node=1 \
     --account=YYY \
     --partition=ZZZ \
