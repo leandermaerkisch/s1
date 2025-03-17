@@ -1,1 +1,4 @@
-{"transformer_layer_cls_to_wrap": "Qwen2DecoderLayer"}
+{
+    "transformer_layer_cls_to_wrap": "Qwen2DecoderLayer",
+    "activation_checkpointing": true
+}

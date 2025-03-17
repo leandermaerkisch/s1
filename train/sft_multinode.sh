@@ -5,7 +5,7 @@ min_lr=0
 epochs=5
 micro_batch_size=1 # If 2 nodes with 8 gpus each, batch_size will be 16
 push_to_hub=true
-gradient_accumulation_steps=1
+gradient_accumulation_steps=2
 max_steps=-1
 gpu_count=$(nvidia-smi -L | wc -l)
 
@@ -22,7 +22,7 @@ train/sft.py \
 --per_device_eval_batch_size=${micro_batch_size} \
 --gradient_accumulation_steps=${gradient_accumulation_steps} \
 --train_file_path="starlife/m1K_tokenized" \
---block_size=20000 \
+--block_size=16384 \
 --warmup_ratio=0.05 \
 --fsdp="full_shard auto_wrap" \
 --fsdp_config="train/scripts/fsdp_config_qwen.json" \
