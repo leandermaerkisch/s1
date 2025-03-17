@@ -47,7 +47,6 @@ torchrun \
     --rdzv_endpoint=$head_node_ip:29500 \
     train/sft.py \
     --block_size=20000 \
-    # --block_size=32768 \
     --per_device_train_batch_size=1 \
     --per_device_eval_batch_size=1 \
     --gradient_accumulation_steps=$grad_acc \

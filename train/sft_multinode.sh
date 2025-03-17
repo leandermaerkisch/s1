@@ -23,8 +23,6 @@ train/sft.py \
 --gradient_accumulation_steps=${gradient_accumulation_steps} \
 --train_file_path="starlife/m1K_tokenized" \
 --block_size=20000 \
-# --block_size=32768 \
---model_name=${base_model} \
 --warmup_ratio=0.05 \
 --fsdp="full_shard auto_wrap" \
 --fsdp_config="train/scripts/fsdp_config_qwen.json" \
