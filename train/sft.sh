@@ -7,7 +7,7 @@ min_lr=0
 epochs=5
 weight_decay=1e-4 # -> the same training pipe as slurm_training
 micro_batch_size=1 # -> batch_size will be 16 if 16 gpus
-gradient_accumulation_steps=2 # requires more GPU memory
+gradient_accumulation_steps=1 # requires more GPU memory
 max_steps=-1
 gpu_count=$(nvidia-smi -L | wc -l)
 push_to_hub=true
@@ -27,7 +27,7 @@ torchrun --nproc-per-node ${gpu_count} --master_port 12345 \
     --bf16=True \
     --eval_strategy="no" \
     --logging_steps=1 \
-    --save_strategy="no" \
+    --save_strategy="epoch" \
     --lr_scheduler_type="cosine" \
     --learning_rate=${lr} \
     --weight_decay=${weight_decay} \
