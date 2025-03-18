@@ -15,6 +15,7 @@ push_to_hub=false
 # Create cache directory on /ephemeral
 mkdir -p /ephemeral/hf_cache
 mkdir -p /ephemeral/model_output
+mkdir -p /ephemeral/checkpoints
 
 # Set environment variables to use the ephemeral storage
 export TRANSFORMERS_CACHE="/ephemeral/hf_cache"
@@ -34,7 +35,7 @@ torchrun --nproc-per-node ${gpu_count} --master_port 12345 \
     --fsdp="full_shard auto_wrap" \
     --fsdp_config="train/fsdp_config_qwen.json" \
     --bf16=True \
-    --eval_strategy="no" \
+    --eval_strategy="best" \
     --logging_steps=1 \
     --save_strategy="epoch" \
     --lr_scheduler_type="cosine" \
