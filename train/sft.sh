@@ -12,6 +12,15 @@ max_steps=-1
 gpu_count=$(nvidia-smi -L | wc -l)
 push_to_hub=true
 
+# Create cache directory on /ephemeral
+mkdir -p /ephemeral/hf_cache
+mkdir -p /ephemeral/model_output
+
+# Set environment variables to use the ephemeral storage
+export TRANSFORMERS_CACHE="/ephemeral/hf_cache"
+export HF_HOME="/ephemeral/hf_cache"
+export HF_DATASETS_CACHE="/ephemeral/hf_cache/datasets"
+
 torchrun --nproc-per-node ${gpu_count} --master_port 12345 \
     train/sft.py \
     --block_size=16384 \
@@ -33,7 +42,7 @@ torchrun --nproc-per-node ${gpu_count} --master_port 12345 \
     --weight_decay=${weight_decay} \
     --adam_beta1=0.9 \
     --adam_beta2=0.95 \
-    --output_dir="ckpts/m1-${uid}" \
+    --output_dir="/ephemeral/model_output/m1-${uid}" \
     --push_to_hub=${push_to_hub} \
     --save_only_model=True
     # --accelerator_config='{"gradient_accumulation_kwargs": {"sync_each_batch": true}}'
