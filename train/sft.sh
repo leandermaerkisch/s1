@@ -35,9 +35,9 @@ torchrun --nproc-per-node ${gpu_count} --master_port 12345 \
     --fsdp="full_shard auto_wrap" \
     --fsdp_config="train/fsdp_config_qwen.json" \
     --bf16=True \
-    --eval_strategy="best" \
+    --eval_strategy="no" \
     --logging_steps=1 \
-    --save_strategy="epoch" \
+    --save_strategy="best" \
     --lr_scheduler_type="cosine" \
     --learning_rate=${lr} \
     --weight_decay=${weight_decay} \
