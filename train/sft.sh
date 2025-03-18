@@ -10,7 +10,7 @@ micro_batch_size=1 # -> batch_size will be 16 if 16 gpus
 gradient_accumulation_steps=8 # requires more GPU memory
 max_steps=-1
 gpu_count=$(nvidia-smi -L | wc -l)
-push_to_hub=true
+push_to_hub=false
 
 # Create cache directory on /ephemeral
 mkdir -p /ephemeral/hf_cache
