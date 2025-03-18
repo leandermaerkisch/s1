@@ -37,7 +37,7 @@ torchrun --nproc-per-node ${gpu_count} --master_port 12345 \
     --bf16=True \
     --eval_strategy="no" \
     --logging_steps=1 \
-    --save_strategy="best" \
+    --save_strategy="no" \
     --lr_scheduler_type="cosine" \
     --learning_rate=${lr} \
     --weight_decay=${weight_decay} \
